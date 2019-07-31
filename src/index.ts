@@ -1,10 +1,16 @@
-import { User } from './models/User'
+// import axios, { AxiosResponse } from 'axios'
 
-const user = User.build({ id: 1, age: 0, name: 'ddd' })
+// axios.get('http://localhost:3000/users')
+//   .then((response: AxiosResponse) => {
+//     console.log(response.data)
+//   }
 
-user.on('change', () => { console.log('changed', user) })
+import { Collection } from './models/Collection'
 
-// user.trigger('change');
+const collection = new Collection('http://localhost:3000/users')
 
-user.fetch();
-// user.save();
+collection.on('change', () => {
+  console.log(collection)
+})
+
+collection.fetch();
