@@ -1,16 +1,12 @@
-// import axios, { AxiosResponse } from 'axios'
+import { UserForm } from './views/UserForm';
+import { User } from './models/User'
 
-// axios.get('http://localhost:3000/users')
-//   .then((response: AxiosResponse) => {
-//     console.log(response.data)
-//   }
+const user = User.build({ name: 'NAME', age: 20 });
+const root = document.getElementById('root')
 
-import { Collection } from './models/Collection'
-
-const collection = new Collection('http://localhost:3000/users')
-
-collection.on('change', () => {
-  console.log(collection)
-})
-
-collection.fetch();
+if (root) {
+  const userForm = new UserForm(root, user);
+  userForm.render()
+} else {
+  throw new Error('Root element wasnt found')
+}
